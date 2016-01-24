@@ -1,0 +1,11 @@
+{application,spam,
+             [{vsn,git},
+              {description,"An OTP application"},
+              {registered,[]},
+              {mod,{spam_app,[]}},
+              {applications,[kernel,stdlib,sasl]},
+              {env,[]},
+              {modules,[]},
+              {contributors,[]},
+              {licenses,[]},
+              {links,[]}]}.
