@@ -11,7 +11,7 @@ init([]) ->
     {ok, state}.
 
 handle_call(_, _, State) ->
-    {noreply, State}.
+    {reply, ok, State}.
 
 handle_cast(_, State) ->
     {noreply, State}.
