@@ -1,0 +1,11 @@
+{application,spam,
+             [{vsn,git},
+              {description,"spam"},
+              {registered,[]},
+              {mod,{spam_app,[]}},
+              {applications,[kernel,stdlib,spam_2]},
+              {env,[]},
+              {modules,[]},
+              {contributors,[]},
+              {licenses,[]},
+              {links,[]}]}.
