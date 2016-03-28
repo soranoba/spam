@@ -1,14 +1,20 @@
 -module(spam_srv).
 -behaviour(gen_server).
 
--export([start_link/0, init/1, handle_call/3, handle_cast/2, handle_info/2, code_change/3, terminate/2]).
+-export([start_link/0, start_link/1, start_link/2, init/1, handle_call/3, handle_cast/2, handle_info/2, code_change/3, terminate/2]).
 
 start_link() ->
-    gen_server:start_link({local, ?MODULE}, ?MODULE, [], []).
+    gen_server:start_link(?MODULE, [], []).
 
-init([]) ->
+start_link(X) ->
+    gen_server:start_link(?MODULE, [X], []).
+
+start_link(X, Y) ->
+    gen_server:start_link(?MODULE, [X, Y], []).
+
+init(_) ->
     _ = timer:send_interval(1000, polling),
-    {ok, state}.
+    {ok, 1}.
 
 handle_call(_, _, State) ->
     {reply, ok, State}.
@@ -21,9 +27,11 @@ handle_info(polling, State) ->
             {error, bad_name} -> io:format("code:priv_dir(spam) -> {error, bad_name}~n", []);
             PrivDir ->
                 Echo = filename:join([PrivDir, "echo.sh"]),
-                io:format("~p~n", [PrivDir]),
-                io:format("~p~n", [os:cmd("sh -e " ++ Echo)])
+                %io:format("~p~n", [PrivDir]),
+                os:cmd("sh -e " ++ Echo)
         end,
+    {noreply, State + 1};
+handle_info(_, State) ->
     {noreply, State}.
 
 terminate(_, _) ->

@@ -3,7 +3,7 @@
 %% @end
 %%%-------------------------------------------------------------------
 
--module('spam_sup').
+-module('spam_simple_sup').
 
 -behaviour(supervisor).
 
@@ -29,14 +29,10 @@ start_link() ->
 %% Child :: {Id,StartFunc,Restart,Shutdown,Type,Modules}
 init([]) ->
     Mod1 = spam_srv,
-    Mod2 = spam_fsm,
-    Mod3 = spam_simple_sup,
     Children = [
-                {Mod1, {Mod1, start_link, []}, permanent, 5000, worker, [Mod1]},
-                {Mod2, {Mod2, start_link, []}, permanent, 5000, worker, [Mod2]},
-                {Mod3, {Mod3, start_link, []}, permanent, 5000, supervisor, [Mod3]}
+                {Mod1, {Mod1, start_link, [a]}, permanent, 5000, worker, [Mod1]}
                ],
-    {ok, { {one_for_all, 0, 1}, Children} }.
+    {ok, { {simple_one_for_one, 5, 10}, Children} }.
 
 %%====================================================================
 %% Internal functions
