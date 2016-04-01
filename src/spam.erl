@@ -1,5 +1,5 @@
 -module(spam).
--behaviour(spam_behaviour).
+%-behaviour(spam_behaviour).
 
 -export([a/0]).
 

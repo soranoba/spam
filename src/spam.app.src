@@ -2,10 +2,10 @@
 %% DO NOT CHANGE VSN FIELD MANUALLY!
 {application,spam,
              [{vsn,"20160124-125653-relflow"},
-              {description,"An OTP application"},
+              {description,"日本語"},
               {registered,[]},
               {mod,{spam_app,[]}},
-              {applications,[kernel,stdlib,sasl]},
+              {applications,[]},
               {env,[]},
               {modules,[]},
               {contributors,[]},
