@@ -2,10 +2,9 @@
 %% DO NOT CHANGE VSN FIELD MANUALLY!
 {application,spam,
              [{vsn,"20160401-174917-relflow"},
-              {description,[26085,26412,35486]},
+              {description, "spam"},
               {registered,[]},
-              {mod,{spam_app,[]}},
-              {applications,[]},
+              {applications,[relx,bbmustache]},
               {env,[]},
               {modules,[]},
               {contributors,[]},
