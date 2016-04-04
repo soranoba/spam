@@ -4,4 +4,5 @@
 -export([a/0]).
 
 a() ->
+    bbmustache:render(<<>>, []),
     ok.

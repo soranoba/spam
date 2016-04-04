@@ -4,7 +4,7 @@
              [{vsn,"20160401-174917-relflow"},
               {description, "spam"},
               {registered,[]},
-              {applications,[bbmustache,spam_2]},
+              {applications,[]},
               {env,[]},
               {modules,[]},
               {contributors,[]},
