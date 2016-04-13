@@ -1,6 +1,6 @@
-VERSION=0.0.1
+VERSION=0.0.2
 
-all: clean compile deploy
+all: compile
 
 clean:
 	rm -rf _build/default/rel/spam
@@ -8,6 +8,8 @@ clean:
 
 compile:
 	./rebar3 release
+	./rebar3 appup generate -p tmp/spam
+	./gen_relup.erl
 	./rebar3 tar
 	mkdir -p tmp/spam/releases/${VERSION}
 	mv _build/default/rel/spam/spam-${VERSION}.tar.gz tmp/spam/releases/${VERSION}/spam.tar.gz

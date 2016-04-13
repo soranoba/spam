@@ -29,7 +29,7 @@ start_link() ->
 %% Child :: {Id,StartFunc,Restart,Shutdown,Type,Modules}
 init([]) ->
     Mod = spam_srv,
-    Children = [{Mod, {Mod, start_link, []}, permanent, 5000, worker, [Mod]}],
+    Children = [{Mod, {Mod, start_link, []}, temporary, 5000, worker, [Mod]}],
     {ok, { {one_for_all, 0, 1}, Children} }.
 
 %%====================================================================
